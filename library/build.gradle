@@ -10,7 +10,7 @@ android {
         targetSdkVersion 23
 
         versionCode "git rev-list origin/master --count".execute().text.toInteger()
-        versionName VERSION_NAME
+        versionName '1.4.1'
 
         consumerProguardFiles 'proguard-rules.txt'
 
