@@ -166,6 +166,7 @@ public class GPUImage {
                 break;
         }
         mRenderer.setRotationCamera(rotation, flipHorizontal, flipVertical);
+        mRenderer.setCameraPreviewSize(camera.getParameters().getPreviewSize());
     }
 
     @TargetApi(11)

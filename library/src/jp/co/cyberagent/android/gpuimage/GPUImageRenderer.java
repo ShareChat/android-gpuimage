@@ -153,27 +153,35 @@ public class GPUImageRenderer implements Renderer, PreviewCallback {
         }
     }
 
+    void setCameraPreviewSize(Size previewSize){
+        this.mPreviewSize = previewSize;
+    }
+
+    private Size mPreviewSize;
+
     @Override
     public void onPreviewFrame(final byte[] data, final Camera camera) {
         if(rendererListener != null){
             rendererListener.onCameraFrame(data, camera);
         }
-        final Size previewSize = camera.getParameters().getPreviewSize();
+        if(mPreviewSize == null){
+            mPreviewSize = camera.getParameters().getPreviewSize();
+        }
         if (mGLRgbBuffer == null) {
-            mGLRgbBuffer = IntBuffer.allocate(previewSize.width * previewSize.height);
+            mGLRgbBuffer = IntBuffer.allocate(mPreviewSize.width * mPreviewSize.height);
         }
         if (mRunOnDraw.isEmpty()) {
             runOnDraw(new Runnable() {
                 @Override
                 public void run() {
-                    GPUImageNativeLibrary.YUVtoRBGA(data, previewSize.width, previewSize.height,
+                    GPUImageNativeLibrary.YUVtoRBGA(data, mPreviewSize.width, mPreviewSize.height,
                             mGLRgbBuffer.array());
-                    mGLTextureId = OpenGlUtils.loadTexture(mGLRgbBuffer, previewSize, mGLTextureId);
+                    mGLTextureId = OpenGlUtils.loadTexture(mGLRgbBuffer, mPreviewSize, mGLTextureId);
                     camera.addCallbackBuffer(data);
 
-                    if (mImageWidth != previewSize.width) {
-                        mImageWidth = previewSize.width;
-                        mImageHeight = previewSize.height;
+                    if (mImageWidth != mPreviewSize.width || mImageHeight != mPreviewSize.height) {
+                        mImageWidth = mPreviewSize.width;
+                        mImageHeight = mPreviewSize.height;
                         adjustImageScaling();
                     }
                 }
