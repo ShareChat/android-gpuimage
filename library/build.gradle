@@ -1,13 +1,12 @@
 apply plugin: 'com.android.library'
-//apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.3'
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion 23
+        minSdkVersion 15
+        targetSdkVersion 26
 
         versionCode "git rev-list origin/master --count".execute().text.toInteger()
         versionName '1.4.1'
@@ -40,7 +39,6 @@ android {
     lintOptions {
         abortOnError false
     }
-    buildToolsVersion '25.0.0'
 }
 
 task androidJavadocs(type: Javadoc) {
@@ -63,13 +61,3 @@ artifacts {
     archives androidJavadocsJar
 }
 
-/*
-publish {
-    userOrg = POM_DEVELOPER_ID
-    groupId = GROUP
-    artifactId = ARTIFACT_ID
-    publishVersion = VERSION_NAME
-    desc = POM_DESCRIPTION
-    website = POM_URL
-}
-*/
