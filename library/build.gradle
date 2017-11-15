@@ -8,9 +8,6 @@ android {
         minSdkVersion 15
         targetSdkVersion 26
 
-        versionCode "git rev-list origin/master --count".execute().text.toInteger()
-        versionName '1.4.1'
-
         consumerProguardFiles 'proguard-rules.txt'
 
         ndk {
