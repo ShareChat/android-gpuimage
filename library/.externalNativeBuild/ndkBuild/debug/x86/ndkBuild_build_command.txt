@@ -1,0 +1,16 @@
+Executable : /Users/amankr/Library/Android/sdk/ndk-bundle/ndk-build
+arguments : 
+NDK_PROJECT_PATH=null
+APP_BUILD_SCRIPT=/Users/amankr/sharechat/ShareChat-New/android-gpuimage/library/Android.mk
+APP_ABI=x86
+NDK_ALL_ABIS=x86
+NDK_DEBUG=1
+APP_PLATFORM=android-15
+NDK_OUT=/Users/amankr/sharechat/ShareChat-New/android-gpuimage/library/build/intermediates/ndkBuild/debug/obj
+NDK_LIBS_OUT=/Users/amankr/sharechat/ShareChat-New/android-gpuimage/library/build/intermediates/ndkBuild/debug/lib
+APP_SHORT_COMMANDS=false
+LOCAL_SHORT_COMMANDS=false
+-B
+-n
+jvmArgs : 
+
