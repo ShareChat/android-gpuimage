@@ -16,6 +16,8 @@ apk/
 target/
 build/
 
+.externalNativeBuild/
+
 # Local configuration file (sdk path, etc)
 local.properties
 
