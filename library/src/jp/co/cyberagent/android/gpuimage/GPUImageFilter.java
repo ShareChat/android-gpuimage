@@ -26,6 +26,16 @@ import java.nio.FloatBuffer;
 import java.util.LinkedList;
 
 public class GPUImageFilter {
+    private long filterId;
+
+    public long getFilterId() {
+        return filterId;
+    }
+
+    public void setFilterId(long filterId) {
+        this.filterId = filterId;
+    }
+
     public static final String NO_FILTER_VERTEX_SHADER = "" +
             "attribute vec4 position;\n" +
             "attribute vec4 inputTextureCoordinate;\n" +
